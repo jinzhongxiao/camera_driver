@@ -1,0 +1,22 @@
+<launch>
+	<arg name="fps" value="30"/>
+    <arg name="org_width" value="1920" />
+    <arg name="org_height" value="1080" />
+    <arg name="image_width" value="960" />
+    <arg name="image_height" value="540" />
+    <arg name="ros_topic" default="0"/>
+
+    <node pkg="camera_driver" type="miivii_gmsl_node" name="stitch_cams_driver" output="screen" >
+        <rosparam file="$(find camera_driver)/config/cameras.yaml" command="load"/>
+        <param name="video_device" value="/dev/video0" />
+        <param name="org_width" value="$(arg org_width)" />
+        <param name="org_height" value="$(arg org_height)" />
+        <param name="image_width" value="$(arg image_width)" />
+        <param name="image_height" value="$(arg image_height)" />
+        <param name="camera_num" value="3"/>
+        <param name="use_undist" value="0"/>
+        <param name="mem_key" value="66"/>
+        <param name="ros_topic" value="$(arg ros_topic)"/>
+    </node>
+
+</launch>

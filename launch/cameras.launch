@@ -1,0 +1,17 @@
+<launch>
+  
+  <arg name="use_ros_topic" default="0"/>
+
+  <include file="$(find camera_driver)/launch/miivii_cameraHX120_isx_driver.launch">
+    <arg name="ros_topic" value="$(arg use_ros_topic)" />
+  </include>
+ 
+  <!-- <include file="$(find camera_driver)/launch/miivii_cameraHX120_imx_driver.launch">
+    <arg name="ros_topic" value="$(arg use_ros_topic)" />
+  </include> -->
+  
+  <include file="$(find camera_driver)/launch/miivii_cameraHX190_driver.launch">
+    <arg name="ros_topic" value="$(arg use_ros_topic)" />
+  </include>
+
+</launch>
